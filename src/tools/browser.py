@@ -7,14 +7,14 @@ from browser_use import AgentHistoryList, Browser, BrowserConfig
 from browser_use import Agent as BrowserAgent
 from src.agents.llm import vl_llm
 from src.tools.decorators import create_logged_tool
-from src.config import CHROME_INSTANCE_PATH
+from src.config import CHROME_INSTANCE_PATH, CHROME_CDP_URL
 
 expected_browser = None
 
 # Use Chrome instance if specified
 if CHROME_INSTANCE_PATH:
     expected_browser = Browser(
-        config=BrowserConfig(chrome_instance_path=CHROME_INSTANCE_PATH)
+        config=BrowserConfig(chrome_instance_path=CHROME_INSTANCE_PATH, cdp_url=CHROME_CDP_URL)
     )
 
 

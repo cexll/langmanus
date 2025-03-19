@@ -1,3 +1,116 @@
+# LangManus - 多代理协作系统
+
+LangManus是一个基于LangGraph构建的多代理协作系统，通过专业代理团队协作完成复杂任务。
+
+## 项目架构
+
+### 系统组件
+
+1. **代理团队**
+   - **协调者(Coordinator)**: 与用户交互，确定任务需求
+   - **规划者(Planner)**: 生成详细的任务执行计划
+   - **监督者(Supervisor)**: 分配任务给专业代理，控制工作流
+   - **研究者(Researcher)**: 执行网络搜索和信息收集
+   - **编码者(Coder)**: 编写和执行代码
+   - **浏览器代理(Browser)**: 模拟浏览器交互，处理网页内容
+   - **报告者(Reporter)**: 生成最终报告和结论
+
+2. **工作流引擎**
+   - 基于LangGraph构建的有向图工作流
+   - 事件驱动的异步执行模式
+   - 状态管理和流程控制
+
+3. **语言模型集成**
+   - **基础LLM(Basic)**: 用于一般任务处理
+   - **推理LLM(Reasoning)**: 用于复杂思考和规划
+   - **视觉LLM(Vision)**: 用于处理图像和网页内容
+
+### 目录结构
+
+```
+src/
+├── agents/             # 代理定义和实现
+│   ├── agents.py       # 代理创建和配置
+│   └── llm.py          # 语言模型接口
+├── api/                # API接口
+├── config/             # 配置文件
+│   ├── agents.py       # 代理-LLM映射
+│   └── env.py          # 环境变量配置
+├── crawler/            # 网页爬取工具
+├── graph/              # 工作流图定义
+│   ├── builder.py      # 图构建器
+│   ├── nodes.py        # 节点函数定义
+│   └── types.py        # 状态和类型定义
+├── prompts/            # 提示模板
+├── service/            # 服务层
+│   └── workflow_service.py  # 工作流服务
+├── tools/              # 工具集合
+└── workflow.py         # 主工作流入口
+```
+
+## 工作流程
+
+1. **任务接收**
+   - 用户提交请求到系统
+   - Coordinator评估任务并与用户交互
+
+2. **任务规划**
+   - Planner生成详细执行计划
+   - 可选择使用搜索增强和深度思考模式
+
+3. **任务执行**
+   - Supervisor根据计划分配任务
+   - 专业代理执行分配的任务并返回结果
+   - Supervisor评估结果并决定下一步
+
+4. **任务完成**
+   - Reporter汇总结果生成最终报告
+   - 系统返回完整结果给用户
+
+## 高级特性
+
+1. **深度思考模式**
+   - 使用更强大的推理型LLM处理复杂任务
+   - 通过配置参数`deep_thinking_mode`启用
+
+2. **搜索辅助规划**
+   - 在生成计划前执行相关搜索
+   - 通过配置参数`search_before_planning`启用
+
+3. **事件流处理**
+   - 流式处理代理执行过程
+   - 实时返回执行状态和结果
+
+## 使用示例
+
+```python
+from src.workflow import run_agent_workflow
+
+# 运行工作流处理用户请求
+result = run_agent_workflow(
+    user_input="分析最近比特币价格变化并预测未来一周趋势",
+    debug=True  # 启用调试模式
+)
+
+# 打印结果
+print(result)
+```
+
+## 扩展和定制
+
+1. **添加新代理**
+   - 在`src/agents/agents.py`中定义新代理
+   - 更新`src/config/agents.py`中的映射关系
+   - 在`src/graph/builder.py`中添加新节点
+
+2. **添加新工具**
+   - 在`src/tools/`目录下创建新工具
+   - 分配给适当的代理使用
+
+3. **自定义提示模板**
+   - 在`src/prompts/`目录下定义新模板
+   - 通过`apply_prompt_template`函数应用
+
 # LangManus
 
 [![Python 3.12+](https://img.shields.io/badge/python-3.12+-blue.svg)](https://www.python.org/downloads/)

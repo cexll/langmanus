@@ -20,6 +20,7 @@ from .env import (
     VL_AZURE_DEPLOYMENT,
     # Other configurations
     CHROME_INSTANCE_PATH,
+    CHROME_CDP_URL,
 )
 from .tools import TAVILY_MAX_RESULTS
 
@@ -43,4 +44,5 @@ __all__ = [
     "TEAM_MEMBERS",
     "TAVILY_MAX_RESULTS",
     "CHROME_INSTANCE_PATH",
+    "CHROME_CDP_URL",
 ]
