@@ -38,7 +38,7 @@ class BrowserTool(BaseTool):
         self._agent = BrowserAgent(
             task=instruction,  # Will be set per request
             llm=vl_llm,
-            browser=expected_browser,
+            # browser=expected_browser,
         )
         try:
             loop = asyncio.new_event_loop()
