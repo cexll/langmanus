@@ -9,7 +9,7 @@ from src.tools import (
     tavily_tool,  # Tavily搜索引擎工具
 )
 
-from .llm import get_llm_by_type
+from src.llms.llm import get_llm_by_type
 from src.config.agents import AGENT_LLM_MAP
 
 # 创建各种专家代理

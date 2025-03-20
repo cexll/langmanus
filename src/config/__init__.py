@@ -20,9 +20,12 @@ from .env import (
     VL_AZURE_DEPLOYMENT,
     # Other configurations
     CHROME_INSTANCE_PATH,
-    CHROME_CDP_URL,
+    CHROME_HEADLESS,
+    CHROME_PROXY_SERVER,
+    CHROME_PROXY_USERNAME,
+    CHROME_PROXY_PASSWORD,
 )
-from .tools import TAVILY_MAX_RESULTS
+from .tools import TAVILY_MAX_RESULTS, BROWSER_HISTORY_DIR
 
 # Team configuration
 TEAM_MEMBERS = ["researcher", "coder", "browser", "reporter"]
@@ -44,5 +47,9 @@ __all__ = [
     "TEAM_MEMBERS",
     "TAVILY_MAX_RESULTS",
     "CHROME_INSTANCE_PATH",
-    "CHROME_CDP_URL",
+    "CHROME_HEADLESS",
+    "CHROME_PROXY_SERVER",
+    "CHROME_PROXY_USERNAME",
+    "CHROME_PROXY_PASSWORD",
+    "BROWSER_HISTORY_DIR",
 ]
